@@ -1,4 +1,4 @@
-type Country = {
+export type CountryType = {
 	name: string
 	population: number
 	region: string | undefined
@@ -10,7 +10,7 @@ export default async function fetchData() {
 	return fetch('https://restcountries.com/v3.1/all')
 		.then((response) => response.json())
 		.then((countries) => {
-			return countries.map((element: any): Country => {
+			return countries.map((element: any): CountryType => {
 				return {
 					name: element.name.common,
 					population: element.population,
