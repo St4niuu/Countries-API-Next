@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use } from 'react'
 
 export default function MainLayout({
 	children,
@@ -6,9 +6,9 @@ export default function MainLayout({
 	children: React.ReactNode
 }): JSX.Element {
 	return (
-		<>
+		<html lang='en'>
 			<head />
 			<body>{children}</body>
-		</>
+		</html>
 	)
 }
