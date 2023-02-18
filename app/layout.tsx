@@ -1,5 +1,5 @@
 import '@/assets/styles/global.css'
-import React, { use } from 'react'
+import React from 'react'
 import AppContextProvider from '@/context/AppContext'
 import ThemeSetter from '@/ui/ThemeSetter'
 import ThemeSwitcher from '@/ui/ThemeSwitcher'
