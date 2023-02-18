@@ -21,14 +21,7 @@ export default function AppContextProvider({
 	const [theme, setTheme]: [
 		string,
 		React.Dispatch<React.SetStateAction<string>>
-	] = useState(() => {
-		if (localStorage.getItem('APP_THEME'))
-			return localStorage.getItem('APP_THEME') as string
-		else {
-			localStorage.setItem('APP_THEME', 'light')
-			return 'light'
-		}
-	})
+	] = useState('')
 
 	const [filter, setFilter]: [
 		string,
@@ -50,7 +43,17 @@ export default function AppContextProvider({
 	}
 
 	useEffect(() => {
-		localStorage.setItem('APP_THEME', theme)
+		if (localStorage.getItem('APP_THEME')) {
+			setTheme(localStorage.getItem('APP_THEME') as string)
+		} else {
+			setTheme('light')
+		}
+	}, [])
+
+	useEffect(() => {
+		if (theme !== '') {
+			localStorage.setItem('APP_THEME', theme)
+		}
 	}, [theme])
 
 	return <AppContext.Provider value={context}>{children}</AppContext.Provider>
