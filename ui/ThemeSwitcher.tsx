@@ -10,17 +10,15 @@ export default function ThemeSwitcher(): JSX.Element {
 	function handleThemeChange(theme: string) {
 		switch (theme) {
 			case 'light':
-				context.setTheme('dark')
-				break
+				return context.setTheme('dark')
 			case 'dark':
-				context.setTheme('light')
-				break
+				return context.setTheme('light')
 		}
 	}
 
 	return (
 		<div
-			className='font-medium flex gap-x-2 cursor-pointer transition-all active:scale-90'
+			className='font-medium flex gap-x-2 cursor-pointer transition-all duration-75 active:scale-90'
 			onClick={() => handleThemeChange(context.theme)}
 		>
 			<img
