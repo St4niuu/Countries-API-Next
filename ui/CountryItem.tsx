@@ -9,7 +9,7 @@ export default function CountryItem({
 	capital,
 }: CountryType): JSX.Element {
 	return (
-		<div className='w-full h-[350px] bg-white flex flex-col gap-y-6 rounded-2xl shadow-xl overflow-hidden dark:bg-darkElement'>
+		<div className='w-full h-[350px] bg-white flex flex-col gap-y-6 rounded-2xl shadow-xl overflow-hidden dark:bg-darkElement md:w-[20%] md:min-w-[16rem]'>
 			<img
 				className='w-full h-[50%]'
 				src={flagUrl}

@@ -9,6 +9,8 @@ type AppContextType = {
 	setFilter: React.Dispatch<React.SetStateAction<string>>
 	search: string
 	setSearch: React.Dispatch<React.SetStateAction<string>>
+	page: number
+	setPage: React.Dispatch<React.SetStateAction<number>>
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined)
@@ -33,6 +35,11 @@ export default function AppContextProvider({
 		React.Dispatch<React.SetStateAction<string>>
 	] = useState('')
 
+	const [page, setPage]: [
+		number,
+		React.Dispatch<React.SetStateAction<number>>
+	] = useState(0)
+
 	const context: AppContextType = {
 		theme: theme,
 		setTheme: setTheme,
@@ -40,6 +47,8 @@ export default function AppContextProvider({
 		setFilter: setFilter,
 		search: search,
 		setSearch: setSearch,
+		page: page,
+		setPage: setPage,
 	}
 
 	useEffect(() => {

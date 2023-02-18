@@ -1,11 +1,15 @@
+'use client'
+
 import CountryInput from '@/ui/CountryInput'
 import CountryItem from '@/ui/CountryItem'
 import SelectRegion from '@/ui/SelectRegion'
 import React, { use } from 'react'
 import fetchData, { CountryType } from './fetchData'
+import { getContext } from '@/context/AppContext'
 
 export default function Page(): JSX.Element {
-	const countries: CountryType[] = use(fetchData())
+	const countries: CountryType[][] = use(fetchData())
+	const { page } = getContext()
 
 	return (
 		<>
@@ -13,8 +17,8 @@ export default function Page(): JSX.Element {
 				<CountryInput />
 				<SelectRegion />
 			</div>
-			<div className='w-full min-w-[360px] h-fit flex flex-col gap-y-8 px-14'>
-				{countries.map((element) => {
+			<div className='w-full min-w-[360px] h-fit flex flex-col flex-wrap gap-y-8 px-14 md:flex-row md:justify-between md:gap-x-16'>
+				{countries[page].map((element) => {
 					return (
 						<CountryItem
 							key={element.name}
