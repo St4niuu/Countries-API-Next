@@ -15,11 +15,10 @@ export default function MainLayout({
 			<body>
 				<AppContextProvider>
 					<ThemeSetter>
-						<div className='w-full min-w-[375px] h-24 bg-white shadow-md flex justify-between items-center px-4 dark:bg-darkElement dark:text-white md:px-16'>
+						<div className='w-full min-w-[375px] h-24 min-h-[80px] bg-white shadow-md flex justify-between items-center px-4 dark:bg-darkElement dark:text-white md:px-16'>
 							<h1 className='font-bold'>Where in the world?</h1>
 							<ThemeSwitcher />
 						</div>
-						<div className='w-full h-fit'></div>
 						{children}
 					</ThemeSetter>
 				</AppContextProvider>
