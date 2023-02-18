@@ -9,13 +9,13 @@ export default function CountryItem({
 	capital,
 }: CountryType): JSX.Element {
 	return (
-		<div className='w-full h-[350px] bg-white flex flex-col gap-y-6 rounded-2xl shadow-xl overflow-hidden dark:bg-darkElement md:w-[20%] md:min-w-[16rem]'>
+		<div className='w-full max-w-[22rem] h-[350px] bg-white flex flex-col gap-y-6 rounded-2xl shadow-xl overflow-hidden dark:bg-darkElement md:w-[21%] md:min-w-[20rem] md:h-[425px]'>
 			<img
 				className='w-full h-[50%]'
 				src={flagUrl}
 				alt={name.toLowerCase().concat('-flag')}
 			/>
-			<div className='w-full h-fit flex flex-col gap-y-6 px-8'>
+			<div className='w-full h-fit flex flex-col gap-y-6 px-8 md:text-[115%]'>
 				<h1 className='font-bold text-black dark:text-white'>{name}</h1>
 				<div className='w-full h-fit flex flex-col'>
 					{[
