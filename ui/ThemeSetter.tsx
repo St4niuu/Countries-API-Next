@@ -9,7 +9,13 @@ export default function ThemeSetter({
 	children: React.ReactNode[]
 }): JSX.Element {
 	return (
-		<div className={getContext().theme === 'dark' ? 'dark' : ''}>
+		<div
+			className={'h-full flex flex-col gap-y-4 transition-colors duration-100 '.concat(
+				getContext().theme === 'dark'
+					? 'dark bg-darkBackground'
+					: 'bg-lightBackground'
+			)}
+		>
 			{children}
 		</div>
 	)
