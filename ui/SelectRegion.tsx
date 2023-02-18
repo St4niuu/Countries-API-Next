@@ -18,7 +18,7 @@ export default function SelectRegion(): JSX.Element {
 		>
 			Filter by Region
 			<svg
-				className={'w-[20px] h-[20px] absolute right-4 top-[50%] translate-y-[-50%] transition-all fill-dark dark:fill-white '.concat(
+				className={'w-[10px] h-[10px] absolute right-4 top-[50%] translate-y-[-50%] transition-all fill-dark dark:fill-white '.concat(
 					isDropped ? 'rotate-0' : 'rotate-[180deg]'
 				)}
 			>
