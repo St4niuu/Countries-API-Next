@@ -15,18 +15,18 @@ export default function CountryBox({
 
 	if (!search && !filter) result = countries.paginated[page]
 	else {
-		if (search)
+		if (search && !filter)
 			result = countries.raw.filter((country) =>
 				country.name.toLowerCase().includes(search.toLowerCase())
 			)
-		else if (filter)
+		else if (!search && filter)
 			result = countries.raw.filter((country) => country.region === filter)
 		else
-			result = countries.raw
-				.filter((country) => country.region === filter)
-				.filter((country) =>
+			result = countries.raw.filter(
+				(country) =>
+					country.region === filter &&
 					country.name.toLowerCase().includes(search.toLowerCase())
-				)
+			)
 	}
 
 	return (
