@@ -9,19 +9,18 @@ export type CountryType = {
 }
 
 export default async function fetchData() {
-	return fetch('https://restcountries.com/v3.1/all')
+	const data = await fetch('https://restcountries.com/v3.1/all')
 		.then((response) => response.json())
 		.then((countries) => {
-			return paginate(
-				countries.map((element: any): CountryType => {
-					return {
-						name: element.name.common,
-						population: element.population,
-						region: element.region,
-						flagUrl: element.flags.png,
-						capital: element.capital && element.capital[0],
-					}
-				})
-			)
+			return countries.map((element: any): CountryType => {
+				return {
+					name: element.name.common,
+					population: element.population,
+					region: element.region,
+					flagUrl: element.flags.png,
+					capital: element.capital && element.capital[0],
+				}
+			})
 		})
+	return { raw: data, paginated: paginate(data) }
 }

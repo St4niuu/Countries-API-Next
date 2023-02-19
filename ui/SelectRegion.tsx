@@ -9,14 +9,14 @@ export default function SelectRegion(): JSX.Element {
 		React.Dispatch<React.SetStateAction<boolean>>
 	] = useState(false)
 
-	const { setFilter } = getContext()
+	const { filter, setFilter } = getContext()
 
 	return (
 		<div
 			className='w-8/12 h-16 bg-white self-start flex items-center px-8 rounded-md shadow-xl relative dark:bg-darkElement dark:text-white md:w-56'
 			onClick={() => setIsDropped(!isDropped)}
 		>
-			Filter by Region
+			{filter ? filter : 'Filter by Region'}
 			<svg
 				className={'w-[10px] h-[10px] absolute right-4 top-[50%] translate-y-[-50%] transition-all fill-dark dark:fill-white '.concat(
 					isDropped ? 'rotate-0' : 'rotate-[180deg]'
@@ -29,7 +29,7 @@ export default function SelectRegion(): JSX.Element {
 					isDropped ? 'scale-y-1' : 'scale-y-0'
 				)}
 			>
-				{['Africa', 'America', 'Asia', 'Europe', 'Oceania'].map((element) => {
+				{['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'].map((element) => {
 					return (
 						<div
 							key={element}

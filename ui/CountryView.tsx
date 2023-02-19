@@ -8,13 +8,30 @@ import { getContext } from '@/context/AppContext'
 export default function CountryBox({
 	countries,
 }: {
-	countries: CountryType[][]
+	countries: { raw: CountryType[]; paginated: CountryType[][] }
 }): JSX.Element {
-	const { page } = getContext()
+	const { page, search, filter } = getContext()
+	let result = undefined
+
+	if (!search && !filter) result = countries.paginated[page]
+	else {
+		if (search)
+			result = countries.raw.filter((country) =>
+				country.name.toLowerCase().includes(search.toLowerCase())
+			)
+		else if (filter)
+			result = countries.raw.filter((country) => country.region === filter)
+		else
+			result = countries.raw
+				.filter((country) => country.region === filter)
+				.filter((country) =>
+					country.name.toLowerCase().includes(search.toLowerCase())
+				)
+	}
 
 	return (
 		<>
-			{countries[page].map((element) => {
+			{result.map((element) => {
 				return (
 					<CountryItem
 						key={element.name}

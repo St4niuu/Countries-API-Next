@@ -5,7 +5,9 @@ import fetchData, { CountryType } from './fetchData'
 import CountryView from '@/ui/CountryView'
 
 export default function Page(): JSX.Element {
-	const countries: CountryType[][] = use(fetchData())
+	const countries: { raw: CountryType[]; paginated: CountryType[][] } = use(
+		fetchData()
+	)
 
 	return (
 		<>
@@ -13,7 +15,7 @@ export default function Page(): JSX.Element {
 				<CountryInput />
 				<SelectRegion />
 			</div>
-			<div className='w-full min-w-[360px] h-fit flex flex-col flex-wrap items-center gap-y-8 px-14 md:flex-row md:justify-center md:gap-x-16'>
+			<div className='w-full min-w-[360px] h-fit flex flex-col flex-wrap items-center gap-y-8 px-14 py-8 md:flex-row md:justify-center md:gap-x-16'>
 				<CountryView countries={countries} />
 			</div>
 		</>
