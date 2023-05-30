@@ -1,4 +1,5 @@
 import '@/assets/styles/global.css'
+import ContextProvider from '@/context/AppContext'
 
 export const metadata = {
 	title: 'Countries API',
@@ -12,7 +13,9 @@ export default function Layout({
 }): JSX.Element {
 	return (
 		<html lang='en'>
-			<body>{children}</body>
+			<body>
+				<ContextProvider>{children}</ContextProvider>
+			</body>
 		</html>
 	)
 }
