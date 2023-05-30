@@ -17,7 +17,14 @@
 		width: 100%;
 		height: 100%;
 	}
-	body {
+	html {
 		@apply font-sans;
+		@apply text-small;
+		@apply font-light;
+	}
+	body {
+		height: fit-content;
+		display: flex;
+		flex-direction: column;
 	}
 }
