@@ -5,7 +5,7 @@ import { useAppContext } from '@/context/AppContext'
 export default function Header(): JSX.Element {
 	const { theme, setTheme } = useAppContext()
 
-	function handleThemeChange() {
+	function handleThemeChange(): void {
 		switch (theme) {
 			case 'light':
 				return setTheme('dark')
@@ -15,10 +15,16 @@ export default function Header(): JSX.Element {
 	}
 
 	return (
-		<div className='w-full h-28 bg-white flex justify-between items-center px-8'>
-			<div className='text-big font-heavy'>Where in the world?</div>
+		<div
+			className={`w-full min-w-[300px] h-28 flex justify-between items-center px-4 md:h-24 md:px-16 ${
+				theme === 'light' ? 'bg-white' : 'bg-darkElement text-white'
+			}`}
+		>
+			<div className='text-big font-heavy md:text-[150%]'>
+				Where in the world?
+			</div>
 			<div
-				className='h-1/4 flex items-center gap-2 transition-all duration-200 active:scale-90'
+				className='h-1/4 flex items-center gap-3 cursor-pointer transition-all duration-100 active:scale-90'
 				onClick={handleThemeChange}
 			>
 				<img
