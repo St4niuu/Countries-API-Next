@@ -7,11 +7,19 @@ export const metadata = {
 	description: 'This is my implementation of the "Countries API" task.',
 }
 
-export default function Layout({
+async function fetchData() {
+	return await fetch('https://restcountries.com/v3.1/all').then((data) =>
+		data.json()
+	)
+}
+
+export default async function Layout({
 	children,
 }: {
 	children: React.ReactNode
-}): JSX.Element {
+}): Promise<JSX.Element> {
+	const data = await fetchData()
+
 	return (
 		<html lang='en'>
 			<body>

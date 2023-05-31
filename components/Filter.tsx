@@ -7,7 +7,7 @@ export default function Filter(): JSX.Element {
 	const [isOpen, setIsOpen] = useState(false)
 	const { filterValue, setFilterValue } = useAppContext()
 
-	function handleQuit(event: any) {
+	function handleQuit(event: any): void {
 		if (!event.target.matches('.filterBox')) {
 			setIsOpen(!isOpen)
 			setFilterValue('')
