@@ -15,11 +15,7 @@ export default function Header(): JSX.Element {
 	}
 
 	return (
-		<div
-			className={`w-full min-w-[300px] h-28 flex justify-between items-center px-4 md:h-24 md:px-16 ${
-				theme === 'light' ? 'bg-white' : 'bg-darkElement text-white'
-			}`}
-		>
+		<div className='w-full min-w-[300px] h-28 flex justify-between items-center px-4 shadow-xl md:h-24 md:px-16 dark:bg-darkElement dark:text-white'>
 			<div className='text-big font-heavy md:text-[150%]'>
 				Where in the world?
 			</div>

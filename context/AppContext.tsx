@@ -46,7 +46,11 @@ export default function AppContextProvider({
 		localStorage.setItem('APP_THEME', theme)
 	}, [theme])
 
-	return <AppContext.Provider value={context}>{children}</AppContext.Provider>
+	return (
+		<AppContext.Provider value={context}>
+			<div className={theme !== 'light' ? 'dark' : ''}>{children}</div>
+		</AppContext.Provider>
+	)
 }
 
 export function useAppContext() {
