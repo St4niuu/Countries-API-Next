@@ -7,15 +7,15 @@ import { CountryType } from '@/app/page'
 
 function paginate(data: CountryType[]): CountryType[][] {
 	const result = []
-	let counter = 0
+	let quantity = 0
 	let tmp = []
 	while (true) {
-		if (counter == 8) {
-			counter = 0
+		if (quantity == 25) {
+			quantity = 0
 			result.push(tmp)
 			tmp = new Array()
 		}
-		counter += 1
+		quantity += 1
 		tmp.push(data.shift())
 		if (data.length == 0) {
 			result.push(tmp)
@@ -37,7 +37,7 @@ export default function Countries({
 	const { inputValue, filterValue } = useAppContext()
 
 	return (
-		<div className='w-full h-fit grow flex flex-col gap-8 px-8'>
+		<div className='w-full min-w-[325px] h-fit grow flex flex-col items-center gap-8 px-8 md:flex-row md:flex-wrap md:justify-center'>
 			{toDisplay.map((element: CountryType, index: number): JSX.Element => {
 				return (
 					<CountryItem

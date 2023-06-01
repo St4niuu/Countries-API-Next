@@ -25,7 +25,7 @@ export default function Filter(): JSX.Element {
 
 	return (
 		<div
-			className='filterBox w-4/6 h-16 bg-white flex justify-between items-center px-6 rounded-md shadow relative md:w-64 dark:bg-darkElement'
+			className='filterBox w-4/6 min-w-[125px] h-16 bg-white flex justify-between items-center px-6 rounded-md shadow relative md:w-64 dark:bg-darkElement'
 			onClick={() => setIsOpen(!isOpen)}
 		>
 			<div className='dark:text-white'>
