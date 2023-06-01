@@ -42,7 +42,7 @@ export default function Filter(): JSX.Element {
 				<use href='/arrow.svg#icon' />
 			</svg>
 			<div
-				className={`w-full h-fit flex flex-col gap-2 px-6 py-4 rounded-md shadow-xl absolute top-[110%] left-0 transition-transform duration-150 origin-top dark:bg-darkElement ${
+				className={`w-full h-fit bg-white flex flex-col gap-2 px-6 py-4 rounded-md shadow-xl absolute top-[110%] left-0 transition-transform duration-150 origin-top dark:bg-darkElement ${
 					isOpen ? 'scale-y-100' : 'scale-y-0'
 				}`}
 			>
