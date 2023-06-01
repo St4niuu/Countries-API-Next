@@ -1,7 +1,8 @@
 import Input from '@/components/Input'
 import Filter from '@/components/Filter'
+import Countries from '@/components/Countries'
 
-type CountryType = {
+export type CountryType = {
 	name: string
 	population: number
 	region: string
@@ -36,6 +37,7 @@ export default async function Page(): Promise<JSX.Element> {
 				<Input />
 				<Filter />
 			</div>
+			<Countries countries={data} />
 		</div>
 	)
 }
