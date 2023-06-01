@@ -37,19 +37,21 @@ export default function Countries({
 	const { inputValue, filterValue } = useAppContext()
 
 	return (
-		<div className='w-full min-w-[325px] h-fit grow flex flex-col items-center gap-8 px-8 md:flex-row md:flex-wrap md:justify-center'>
-			{toDisplay.map((element: CountryType, index: number): JSX.Element => {
-				return (
-					<CountryItem
-						key={index}
-						name={element.name}
-						population={element.population}
-						region={element.region}
-						capital={element.capital}
-						imgUrl={element.imgUrl}
-					/>
-				)
-			})}
-		</div>
+		<>
+			<div className='w-full min-w-[325px] h-fit grow flex flex-col items-center gap-8 px-8 md:flex-row md:flex-wrap md:justify-center'>
+				{toDisplay.map((element: CountryType, index: number): JSX.Element => {
+					return (
+						<CountryItem
+							key={index}
+							name={element.name}
+							population={element.population}
+							region={element.region}
+							capital={element.capital}
+							imgUrl={element.imgUrl}
+						/>
+					)
+				})}
+			</div>
+		</>
 	)
 }
