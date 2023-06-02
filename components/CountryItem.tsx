@@ -8,7 +8,7 @@ export default function CountryItem({
 	imgUrl,
 }: CountryType): JSX.Element {
 	return (
-		<div className='w-full max-w-[325px] h-[350px] flex flex-col rounded-lg shadow-md overflow-hidden dark:bg-darkElement'>
+		<div className='w-full max-w-[325px] h-[375px] flex flex-col rounded-lg shadow-md overflow-hidden dark:bg-darkElement'>
 			<img
 				className='w-full h-[45%]'
 				src={imgUrl}

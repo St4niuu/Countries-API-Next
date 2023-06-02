@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { useAppContext } from '@/context/AppContext'
 import CountryItem from './CountryItem'
 import { CountryType } from '@/app/page'
-import { count } from 'console'
 
 function paginate(data: CountryType[]): CountryType[][] {
 	const result = []
@@ -32,7 +31,6 @@ export default function Countries({
 	countries: CountryType[]
 }): JSX.Element {
 	const [page, setPage] = useState(0)
-	const [data, setData] = useState([...countries])
 	const [elements, setElements] = useState(paginate([...countries]))
 	const [toDisplay, setToDisplay] = useState(elements[page])
 	const { inputValue, filterValue } = useAppContext()
@@ -43,19 +41,20 @@ export default function Countries({
 
 	useEffect(() => {
 		if (inputValue || filterValue) {
-			const tmp = countries.filter((element: CountryType): boolean => {
-				return (
-					element.name.toLowerCase().includes(inputValue.toLowerCase()) &&
-					element.region.toLowerCase() == filterValue.toLowerCase()
+			setElements(
+				paginate(
+					countries.filter((element: CountryType): boolean => {
+						return (
+							element.name.toLowerCase().includes(inputValue.toLowerCase()) &&
+							element.region.toLowerCase() == filterValue.toLowerCase()
+						)
+					})
 				)
-			})
-			setPage(0)
-			setData(tmp)
-			setElements(paginate([...tmp]))
+			)
 		} else {
-			setData([...countries])
 			setElements(paginate([...countries]))
 		}
+		setPage(0)
 	}, [inputValue, filterValue])
 
 	return (
