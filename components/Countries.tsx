@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useAppContext } from '@/context/AppContext'
 import CountryItem from './CountryItem'
 import { CountryType } from '@/app/page'
+import { count } from 'console'
 
 function paginate(data: CountryType[]): CountryType[][] {
 	const result = []
@@ -31,26 +32,70 @@ export default function Countries({
 	countries: CountryType[]
 }): JSX.Element {
 	const [page, setPage] = useState(0)
-	const [elements, setElements] = useState(paginate(countries))
+	const [elements, setElements] = useState(paginate([...countries]))
 	const [toDisplay, setToDisplay] = useState(elements[page])
 
 	const { inputValue, filterValue } = useAppContext()
 
+	useEffect(() => {
+		setToDisplay(elements[page])
+	}, [elements, page])
+
+	useEffect(() => {
+		if (inputValue) {
+			setElements(
+				paginate(
+					countries.filter((element: CountryType): boolean => {
+						return element.name.toLowerCase().includes(inputValue.toLowerCase())
+					})
+				)
+			)
+			setPage(0)
+		} else setElements(paginate([...countries]))
+	}, [inputValue])
+
 	return (
 		<>
 			<div className='w-full min-w-[325px] h-fit grow flex flex-col items-center gap-8 px-8 md:flex-row md:flex-wrap md:justify-center'>
-				{toDisplay.map((element: CountryType, index: number): JSX.Element => {
-					return (
-						<CountryItem
-							key={index}
-							name={element.name}
-							population={element.population}
-							region={element.region}
-							capital={element.capital}
-							imgUrl={element.imgUrl}
-						/>
-					)
-				})}
+				{toDisplay[0] &&
+					toDisplay.map((element: CountryType, index: number): JSX.Element => {
+						return (
+							<CountryItem
+								key={index}
+								name={element.name}
+								population={element.population}
+								region={element.region}
+								capital={element.capital}
+								imgUrl={element.imgUrl}
+							/>
+						)
+					})}
+			</div>
+			<div
+				className={`w-36 h-fit flex gap-3 overflow-hidden ${
+					[1, 2].includes(elements.length) ? 'justify-center' : ''
+				}`}
+			>
+				{new Array(elements.length)
+					.fill(true)
+					.map((element: boolean, index: number): JSX.Element => {
+						return (
+							<div
+								key={index}
+								className={`w-10 h-12 font-medium flex-none grid place-items-center rounded-lg cursor-pointer active:scale-95 transition-transform duration-75 ${
+									index == page
+										? 'bg-zinc-500 text-white'
+										: 'bg-zinc-300 dark:bg-white'
+								}`}
+								onClick={() => {
+									setPage(index)
+									window.scrollTo(0, 0)
+								}}
+							>
+								{index + 1}
+							</div>
+						)
+					})}
 			</div>
 		</>
 	)
