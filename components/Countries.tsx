@@ -46,10 +46,19 @@ export default function Countries({
 			setElements(
 				paginate(
 					countries.filter((element: CountryType): boolean => {
-						return (
-							element.name.toLowerCase().includes(inputValue.toLowerCase()) &&
-							element.region.toLowerCase() == filterValue.toLowerCase()
-						)
+						switch (!!filterValue) {
+							case true:
+								return (
+									element.name
+										.toLowerCase()
+										.includes(inputValue.toLowerCase()) &&
+									element.region.toLowerCase() == filterValue.toLowerCase()
+								)
+							case false:
+								return element.name
+									.toLowerCase()
+									.includes(inputValue.toLowerCase())
+						}
 					})
 				)
 			)
