@@ -94,31 +94,34 @@ export default function Countries({
 					alt='navigation-left'
 					onClick={() => setPagesState(pagesState - 1)}
 				/>
-				<div
-					className={`w-36 h-fit flex gap-3 overflow-hidden transition-transform duration-200 ${
-						[1, 2].includes(elements.length) ? 'justify-center' : ''
-					}`}
-				>
-					{new Array(elements.length)
-						.fill(true)
-						.map((element: boolean, index: number): JSX.Element => {
-							return (
-								<div
-									key={index}
-									className={`w-10 h-12 font-medium flex-none grid place-items-center rounded-lg cursor-pointer active:scale-95 transition-transform duration-75 ${
-										index == page
-											? 'bg-zinc-500 text-white'
-											: 'bg-zinc-300 dark:bg-white'
-									}`}
-									onClick={() => {
-										setPage(index)
-										window.scrollTo(0, 0)
-									}}
-								>
-									{index + 1}
-								</div>
-							)
-						})}
+				<div className='w-36 h-fit overflow-hidden'>
+					<div
+						style={{ transform: `translateX(calc(${pagesState}*-3.25rem))` }}
+						className={`w-fit h-fit flex gap-3 transition-transform duration-200 ${
+							[1, 2].includes(elements.length) ? 'w-full justify-center' : ''
+						}`}
+					>
+						{new Array(elements.length)
+							.fill(true)
+							.map((element: boolean, index: number): JSX.Element => {
+								return (
+									<div
+										key={index}
+										className={`w-10 h-12 font-medium flex-none grid place-items-center rounded-lg cursor-pointer active:scale-95 transition-transform duration-75 ${
+											index == page
+												? 'bg-zinc-500 text-white'
+												: 'bg-zinc-300 dark:bg-white'
+										}`}
+										onClick={() => {
+											setPage(index)
+											window.scrollTo(0, 0)
+										}}
+									>
+										{index + 1}
+									</div>
+								)
+							})}
+					</div>
 				</div>
 				<img
 					className={`w-fit h-1/2 rotate-[270deg] cursor-pointer ${
