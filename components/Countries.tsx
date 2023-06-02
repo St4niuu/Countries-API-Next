@@ -66,6 +66,7 @@ export default function Countries({
 			setElements(paginate([...countries]))
 		}
 		setPage(0)
+		setPagesState(0)
 	}, [inputValue, filterValue])
 
 	return (
