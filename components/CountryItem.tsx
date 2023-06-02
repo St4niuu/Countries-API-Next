@@ -1,4 +1,7 @@
+'use client'
+
 import { CountryType } from '@/app/page'
+import { useRouter } from 'next/navigation'
 
 export default function CountryItem({
 	name,
@@ -7,8 +10,13 @@ export default function CountryItem({
 	capital,
 	imgUrl,
 }: CountryType): JSX.Element {
+	const router = useRouter()
+
 	return (
-		<div className='w-full max-w-[325px] h-[375px] flex flex-col rounded-lg shadow-md overflow-hidden dark:bg-darkElement'>
+		<div
+			className='w-full max-w-[325px] h-[375px] flex flex-col rounded-lg shadow-md overflow-hidden cursor-pointer dark:bg-darkElement'
+			onClick={() => router.push(`/${name}`)}
+		>
 			<img
 				className='w-full h-[45%]'
 				src={imgUrl}
