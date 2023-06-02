@@ -46,7 +46,7 @@ export default function Filter(): JSX.Element {
 					isOpen ? 'scale-y-100' : 'scale-y-0'
 				}`}
 			>
-				{['Africa', 'America', 'Asia', 'Europe', 'Oceania'].map(
+				{['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'].map(
 					(element: string): JSX.Element => {
 						return (
 							<div

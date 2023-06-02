@@ -32,9 +32,9 @@ export default function Countries({
 	countries: CountryType[]
 }): JSX.Element {
 	const [page, setPage] = useState(0)
+	const [data, setData] = useState([...countries])
 	const [elements, setElements] = useState(paginate([...countries]))
 	const [toDisplay, setToDisplay] = useState(elements[page])
-
 	const { inputValue, filterValue } = useAppContext()
 
 	useEffect(() => {
@@ -42,17 +42,21 @@ export default function Countries({
 	}, [elements, page])
 
 	useEffect(() => {
-		if (inputValue) {
-			setElements(
-				paginate(
-					countries.filter((element: CountryType): boolean => {
-						return element.name.toLowerCase().includes(inputValue.toLowerCase())
-					})
+		if (inputValue || filterValue) {
+			const tmp = countries.filter((element: CountryType): boolean => {
+				return (
+					element.name.toLowerCase().includes(inputValue.toLowerCase()) &&
+					element.region.toLowerCase() == filterValue.toLowerCase()
 				)
-			)
+			})
 			setPage(0)
-		} else setElements(paginate([...countries]))
-	}, [inputValue])
+			setData(tmp)
+			setElements(paginate([...tmp]))
+		} else {
+			setData([...countries])
+			setElements(paginate([...countries]))
+		}
+	}, [inputValue, filterValue])
 
 	return (
 		<>
